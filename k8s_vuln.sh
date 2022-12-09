@@ -22,6 +22,7 @@ fi
 # CVE-2021-44228
 echo "Scanning $1..."
 
+#List all images
 imgs=`kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.spec.containers[*].image}{" "}' | tr " " "\n" | sort -u`
 for img in ${imgs}; do
   echo "scanning ${img}"
